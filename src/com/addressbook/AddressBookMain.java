@@ -10,10 +10,11 @@ public class AddressBookMain {
         while (run) {
             System.out.println("\n--- Address Book Menu ---");
             System.out.println("1. Add Contact");
-            System.out.println("2. Edit Contact");
-            System.out.println("3. Delete Contact");
-            System.out.println("4. Display Contacts");
-            System.out.println("5. Exit");
+            System.out.println("2. Add Multiple Contacts");
+            System.out.println("3. Edit Contact");
+            System.out.println("4. Delete Contact");
+            System.out.println("5. Display Contacts");
+            System.out.println("6. Exit");
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
             scanner.nextLine(); // consume newline
@@ -23,19 +24,22 @@ public class AddressBookMain {
                     addressBook.addContact(scanner);
                     break;
                 case 2:
+                    addressBook.addMultipleContacts(scanner);
+                    break;
+                case 3:
                     System.out.print("Enter First Name of contact to edit: ");
                     String editName = scanner.nextLine();
                     addressBook.editContact(editName, scanner);
                     break;
-                case 3:
+                case 4:
                     System.out.print("Enter First Name of contact to delete: ");
                     String deleteName = scanner.nextLine();
                     addressBook.deleteContact(deleteName);
                     break;
-                case 4:
+                case 5:
                     addressBook.displayContacts();
                     break;
-                case 5:
+                case 6:
                     run = false;
                     System.out.println("Exiting Address Book.");
                     break;

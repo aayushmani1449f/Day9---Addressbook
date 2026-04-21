@@ -41,6 +41,16 @@ public class AddressBook {
         System.out.println("Contact added successfully!");
     }
 
+    public void addMultipleContacts(Scanner scanner) {
+        System.out.print("How many contacts do you want to add? ");
+        int count = scanner.nextInt();
+        scanner.nextLine(); // consume newline
+        for (int i = 0; i < count; i++) {
+            System.out.println("\nAdding Contact " + (i + 1) + ":");
+            addContact(scanner);
+        }
+    }
+
     public void editContact(String name, Scanner scanner) {
         for (Contact contact : contacts) {
             if (contact.getFirstName().equalsIgnoreCase(name)) {
