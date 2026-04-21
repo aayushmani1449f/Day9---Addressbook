@@ -41,6 +41,33 @@ public class AddressBook {
         System.out.println("Contact added successfully!");
     }
 
+    public void editContact(String name, Scanner scanner) {
+        for (Contact contact : contacts) {
+            if (contact.getFirstName().equalsIgnoreCase(name)) {
+                System.out.println("Editing Contact: " + contact.getFirstName());
+                System.out.print("Enter New First Name: ");
+                contact.setFirstName(scanner.nextLine());
+                System.out.print("Enter New Last Name: ");
+                contact.setLastName(scanner.nextLine());
+                System.out.print("Enter New Address: ");
+                contact.setAddress(scanner.nextLine());
+                System.out.print("Enter New City: ");
+                contact.setCity(scanner.nextLine());
+                System.out.print("Enter New State: ");
+                contact.setState(scanner.nextLine());
+                System.out.print("Enter New Zip: ");
+                contact.setZip(scanner.nextLine());
+                System.out.print("Enter New Phone Number: ");
+                contact.setPhoneNumber(scanner.nextLine());
+                System.out.print("Enter New Email: ");
+                contact.setEmail(scanner.nextLine());
+                System.out.println("Contact updated successfully!");
+                return;
+            }
+        }
+        System.out.println("Contact not found.");
+    }
+
     public void displayContacts() {
         if (contacts.isEmpty()) {
             System.out.println("No contacts to display.");
