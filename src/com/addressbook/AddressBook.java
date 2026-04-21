@@ -68,6 +68,17 @@ public class AddressBook {
         System.out.println("Contact not found.");
     }
 
+    public void deleteContact(String name) {
+        for (int i = 0; i < contacts.size(); i++) {
+            if (contacts.get(i).getFirstName().equalsIgnoreCase(name)) {
+                contacts.remove(i);
+                System.out.println("Contact deleted successfully!");
+                return;
+            }
+        }
+        System.out.println("Contact not found.");
+    }
+
     public void displayContacts() {
         if (contacts.isEmpty()) {
             System.out.println("No contacts to display.");
