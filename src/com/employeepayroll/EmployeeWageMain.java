@@ -10,10 +10,15 @@ public class EmployeeWageMain {
         int FULL_DAY_HOURS = 8;
         int PART_TIME_HOURS = 8;
 
-        int NUM_WORKING_DAYS = 20;
+        int MAX_WORKING_DAYS = 20;
+        int MAX_WORKING_HOURS = 100;
+        
         int totalWage = 0;
+        int totalDays = 0;
+        int totalHours = 0;
 
-        for (int day = 1; day <= NUM_WORKING_DAYS; day++) {
+        while (totalDays < MAX_WORKING_DAYS && totalHours < MAX_WORKING_HOURS) {
+            totalDays++;
             int empCheck = (int) Math.floor(Math.random() * 10) % 3;
             int empHrs = 0;
             int dailyWage = 0;
@@ -30,11 +35,16 @@ public class EmployeeWageMain {
                     break;
             }
 
+            totalHours += empHrs;
+            // if adding empHrs exceeds max, we shouldn't necessarily cap it based on typical problem statement, or maybe we do. 
+            // Usually, it calculates for that day and stops if it reached/exceeded.
+
             dailyWage = WAGE_PER_HOUR * empHrs;
             totalWage += dailyWage;
-            System.out.println("Day " + day + " Wage: " + dailyWage);
+            System.out.println("Day " + totalDays + " - Hours: " + empHrs + " - Wage: " + dailyWage);
         }
 
+        System.out.println("Total Working Hours: " + totalHours);
         System.out.println("Total Monthly Wage: " + totalWage);
     }
 }
