@@ -37,8 +37,14 @@ public class AddressBook {
         String email = scanner.nextLine();
 
         Contact newContact = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
-        contacts.add(newContact);
-        System.out.println("Contact added successfully!");
+        
+        boolean isDuplicate = contacts.stream().anyMatch(contact -> contact.equals(newContact));
+        if (isDuplicate) {
+            System.out.println("Error: A contact with the same first and last name already exists in this address book.");
+        } else {
+            contacts.add(newContact);
+            System.out.println("Contact added successfully!");
+        }
     }
 
     public void addMultipleContacts(Scanner scanner) {
@@ -97,5 +103,9 @@ public class AddressBook {
                 System.out.println(contact);
             }
         }
+    }
+
+    public List<Contact> getContacts() {
+        return contacts;
     }
 }
